@@ -1,0 +1,14 @@
+/backup/
+/.claude/
+/__pycache__/
+/outputs/
+*.tmp   
+*.pdf
+*.docx
+*.xlsx
+
+/US*/
+*.html
+/patent_agent/__pycache__/
+
+.env
