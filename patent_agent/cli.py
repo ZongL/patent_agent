@@ -17,6 +17,7 @@ from patent_agent.config import (
 )
 from patent_agent.diagram import run_pass2_one
 from patent_agent.html_render import render_html
+from patent_agent.understand import normalize_understanding
 from patent_agent.pdf_input import (
     build_content_blocks,
     estimate_payload_size,
@@ -79,7 +80,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="patent_agent",
         description=(
-            "Analyze a USPTO patent PDF with Claude and produce a bilingual "
+            "Analyze a USPTO patent PDF with LLM and produce a bilingual "
             "(English + Simplified Chinese) HTML report with model-generated "
             "SVG diagrams."
         ),
@@ -278,9 +279,10 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     if not args.force and cache.has(p1_key):
         data = cache.get(p1_key)
+        normalize_understanding(data)  # coerce legacy cache formats
         print("Pass 1 (understanding): cache hit, skipping API call")
     else:
-        print("Pass 1 (understanding): calling Claude...")
+        print("Pass 1 (understanding): calling LLM...")
         try:
             data, usage = run_pass1(
                 client,
@@ -333,7 +335,7 @@ def main(argv: Optional[list[str]] = None) -> int:
 
             print(
                 f"Pass 2 (fig {idx}/{len(diagrams)} {did}, type={diagram.get('type')}): "
-                "streaming from Claude..."
+                "streaming from LLM..."
             )
             try:
                 svg_text, usage, ok = run_pass2_one(

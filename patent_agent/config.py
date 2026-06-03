@@ -8,7 +8,7 @@ of the PDF on every API call.
 #DEFAULT_MODEL = "claude-opus-4-7"
 #DEFAULT_MODEL = "opus[1m]"
 DEFAULT_MODEL = "mimo-v2.5"
-PROMPT_VERSION = "v2"  # bump on any change to input shape or prompts
+PROMPT_VERSION = "v3"  # bump on any change to input shape or prompts
 DEFAULT_MAX_DIAGRAMS = 8
 
 # PDF extraction
@@ -43,6 +43,9 @@ USER_INSTRUCTION_UNDERSTAND = """Read the attached USPTO patent PDF in full, inc
 
 Requirements:
 - All `_en` fields are written in English. All `_zh` fields are written in Simplified Chinese.
+- `title_en` / `title_zh`: The patent title in English and Chinese.
+- `abstract_en` / `abstract_zh`: A concise technical summary of the invention (what it is, what problem it solves, and the key mechanism) in English and Chinese.
+- `background_en` / `background_zh`: The technical context and problem statement — what existing solutions do, why they fall short, and what gap this invention fills. Written in English and Chinese.
 - Component `id` values are short, stable identifiers (e.g. `C1`, `C2`, ... or `controller`, `inverter`, `battery_pack`).
 - Interaction `from_component` and `to_component` MUST reference existing component `id` values.
 - `interactions[].sequence_hint` is an integer; use it to suggest temporal or causal ordering when relevant (1 = earliest). Use 0 if no ordering is implied.
