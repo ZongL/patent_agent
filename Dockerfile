@@ -20,4 +20,4 @@ RUN mkdir -p /app/outputs
 
 EXPOSE 7860
 
-CMD ["python", "app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--workers", "2", "--timeout", "300", "app:app"]
