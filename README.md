@@ -1,3 +1,14 @@
+---
+title: Patent Agent
+emoji: 🏃
+colorFrom: purple
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+
 # Patent Agent · USPTO 专利智能分析
 
 把一份 USPTO 专利 PDF 喂进去，吐出一份**中英双语**的 HTML 报告，
