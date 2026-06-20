@@ -6,6 +6,10 @@ import os
 import re
 import sys
 from typing import Any, Optional
+from dotenv import load_dotenv
+
+# Load .env file from project root
+load_dotenv()
 
 from patent_agent.cache import ResponseCache
 from patent_agent.config import (

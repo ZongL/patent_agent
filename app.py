@@ -4,6 +4,10 @@ import os
 import tempfile
 import shutil
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
 
 from flask import Flask, request, render_template_string, send_file, jsonify
 
