@@ -12,3 +12,4 @@
 /patent_agent/__pycache__/
 
 .env
+/.venv

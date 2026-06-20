@@ -276,7 +276,7 @@ $env:OPENAI_BASE_URL = "https://your-proxy.example.com/v1"
 运行：
 
 ```bash
-python -m patent_agent tesla-20260121885.pdf --verbose
+python -m patent_agent tesla-demo.pdf --verbose
 ```
 
 常用参数：
